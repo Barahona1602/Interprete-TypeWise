@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +9,10 @@
       rel="stylesheet"
       type="text/css"
     />
-
+      <!-- SweetAlert2 -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.2/dist/sweetalert2.min.css" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.2/dist/sweetalert2.min.js"></script>
     <title>TypeWise</title>
     <link rel="stylesheet" href="css/index.css" />
   </head>
@@ -21,8 +24,10 @@
         <div class="cont-botones2"> 
           <div class="botones">
             <button onclick="Abrir()" class="btn_abrir">Abrir</button>
-            <button onclick="Guardar()" class="btn_guardar">Guardar</button>
+            <button onclick="GuardarComo()" class="btn_guardar">Guardar</button>
             <button onclick="Nuevo()" class="btn_guardar">Nuevo</button>
+            <button onclick="AbrirPestaña()" class="btn_guardar">Abrir Pestaña</button>
+            <button onclick="CerrarPestaña()" class="btn_guardar">Cerrar Pestaña</button>
           </div>
         </div>
       <div class="wrap-main">

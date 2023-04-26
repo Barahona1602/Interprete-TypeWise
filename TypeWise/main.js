@@ -26,6 +26,19 @@ function keydown(event) {
   }
 }
 
+// Método para abrir una pestaña con la ruta actual
+function AbrirPestaña() {
+  window.open(location.href, "_blank");
+}
+
+// Cierra la pestaña actual
+function CerrarPestaña() {
+  window.open('', '_self', '');
+  window.close();
+}
+
+
+
 function Abrir() {
   var input = document.createElement("input");
   input.type = "file";
@@ -41,23 +54,45 @@ function Abrir() {
   };
 }
 
-function Guardar() {
-  var n = prompt("Nombre del archivo", "Archivo_typewise");
-  var element = document.createElement("a");
-  element.setAttribute(
-    "href",
-    "data:text/plain;charset=utf-8," +
-      encodeURIComponent(document.getElementById("entrada").value)
-  );
-  element.setAttribute("download", filename);
+function GuardarComo() {
+  Swal.fire({
+    title: 'Nombre del archivo',
+    input: 'text',
+    inputValue: '',
+    inputAttributes: {
+      autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Guardar',
+    cancelButtonText: 'Cancelar',
+    showLoaderOnConfirm: true,
+    preConfirm: (filename) => {
+      var element = document.createElement("a");
+      element.setAttribute(
+        "href",
+        "data:text/plain;charset=utf-8," +
+          encodeURIComponent(document.getElementById("entrada").value)
+      );
+      element.setAttribute("download", filename + ".tw");
 
-  element.style.display = "none";
-  document.body.appendChild(element);
+      element.style.display = "none";
+      document.body.appendChild(element);
 
-  element.click();
+      element.click();
 
-  document.body.removeChild(element);
+      document.body.removeChild(element);
+    },
+    allowOutsideClick: () => !Swal.isLoading()
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: 'Archivo guardado exitosamente!',
+        icon: 'success'
+      });
+    }
+  });
 }
+
 
 function Nuevo() {
   var entrada = document.getElementById("entrada");
@@ -101,9 +136,13 @@ function Analizar() {
   d3.select("#canvas-arbol")
     .graphviz()
     .renderDot(resultado.arbol.graficar_ast());
-  alert(
-    "se ha terminado el analisis, los resportes se encuentran en la parte inferior"
-  );
+    Swal.fire({
+      icon: 'success',
+      title: '¡Análisis completado!',
+      text: 'Se ha analizado correctamente el archivo',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ok'
+    })
 }
 
 function graficar_errores(lex, sin) {
@@ -159,3 +198,4 @@ function graficar_errores(lex, sin) {
   dot += "</TABLE>>];\n}";
   return dot;
 }
+
