@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=M PLUS 2"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <title>TypeWise</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="contenido">
+      <div>
+        <h2>TypeWise</h2>
+      </div>
+        <div class="cont-botones2"> 
+          <div class="botones">
+            <button onclick="Abrir()" class="btn_abrir">Abrir</button>
+            <button onclick="Guardar()" class="btn_guardar">Guardar</button>
+            <button onclick="Nuevo()" class="btn_guardar">Nuevo</button>
+          </div>
+        </div>
+      <div class="wrap-main">
+        <div class="cont-editor">
+          <h3>Entrada</h3>
+          <div class="editor">
+            <div class="line-numbers line-dark">
+              <span></span>
+            </div>
+            <textarea
+              id="entrada"
+              oninput="keyup(this)"
+              onkeydown="keydown(event)"
+            ></textarea>
+          </div>
+        </div>
+        <div>
+          <h3>Consola</h3>
+          <div class="editor">
+            <div class="line-numbers">
+              <span></span>
+            </div>
+            <textarea id="consola" disabled></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="cont-botones">
+        <div class="botones">
+          <button onclick="Analizar()" class="btn_analizar">Analizar</button>
+        </div>
+      </div>
+      <h2>Reportes</h2>
+      <hr>
+      <div class="cont-canvas">
+        <div id="canvas-simbolos"></div>
+        <div id="canvas-arbol"></div>
+      </div>
+    </div>
+  </body>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"
+    integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+  <script src="./Clases/variable.js"></script>
+  <script src="./Clases/lista.js"></script>
+  <script src="./Clases/vector.js"></script>
+  <script src="./Clases/funcion.js"></script>
+  <script src="./Clases/metodo.js"></script>
+  <script src="./Gramatica/gramatica.js"></script>
+  <script src="./Clases/ast.js"></script>
+  <script src="./Gramatica/Nodo.js"></script>
+  <script src="main.js"></script>
+</html>
